@@ -1,9 +1,18 @@
- 
- "use client";
+
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
+const categories = [
+  { name: "Classic Pizzas", emoji: "🍕" },
+  { name: "Vegetarian Pizzas", emoji: "🥬" },
+  { name: "Meat Lovers", emoji: "🥓" },
+  { name: "Specialty / Gourmet Pizzas", emoji: "👨‍🍳" },
+  { name: "Sides & Appetizers", emoji: "🍟" },
+  { name: "Beverages & Desserts", emoji: "🥤" },
+];
 
 export default function Home() {
   return (
@@ -41,6 +50,34 @@ export default function Home() {
               className="h-80 w-80 rounded-full object-cover shadow-2xl md:h-96 md:w-96"
             />
           </motion.div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16">
+        <h2 className="text-center text-3xl font-bold text-red-700">
+          Explore by Category
+        </h2>
+        <p className="mx-auto mt-2 max-w-xl text-center text-gray-600">
+          Find exactly what you are craving.
+        </p>
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {categories.map((c, i) => (
+            <motion.div
+              key={c.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+            >
+              <Link
+                href={`/menu?category=${encodeURIComponent(c.name)}`}
+                className="flex h-36 flex-col items-center justify-center rounded-xl border bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-red-400 hover:shadow-md"
+              >
+                <span className="text-4xl">{c.emoji}</span>
+                <span className="mt-2 text-sm font-semibold">{c.name}</span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>

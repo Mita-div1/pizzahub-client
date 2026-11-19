@@ -5,6 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import FeaturedItems from "@/components/FeaturedItems";
+import ExtraSections from "@/components/ExtraSections";
+
+
+
+
 
 const categories = [
   { name: "Classic Pizzas", emoji: "🍕" },
@@ -82,6 +87,7 @@ export default function Home() {
         </div>
       </section>
             <FeaturedItems />
+                  <ExtraSections />
     </div>
   );
 }

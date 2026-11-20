@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { toast } from "sonner";
 import DashboardShell from "@/components/DashboardShell";
 import { api } from "@/lib/api";
@@ -27,8 +27,16 @@ export default function MyItems() {
   };
 
   const toggle = async (item) => {
-    const next = item.status === "approved" ? "inactive" : "approved";
-    toast.info("Availability is managed after admin approval");
+    try {
+      await api(`/vendor/menu-items/${item._id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ available: item.available === false }),
+      });
+      toast.success(item.available === false ? "Marked as available" : "Marked as unavailable");
+      load();
+    } catch (e) {
+      toast.error(e.message);
+    }
   };
 
   return (
@@ -47,9 +55,20 @@ export default function MyItems() {
                 <h3 className="text-lg font-semibold">{i.itemName}</h3>
                 <p>{i.category} · ${i.price} · {i.location}</p>
                 <p className="mt-1 font-medium capitalize text-red-600">Status: {i.status}</p>
+                <p className="text-xs text-gray-500">
+                  {i.available === false ? "Currently unavailable" : "Available"}
+                </p>
               </div>
               <div className="flex flex-col gap-2">
-                <Button variant="outline" onClick={() => toggle(i)}>Availability</Button>
+                <Link
+                  href={`/dashboard/vendor/items/${i._id}/edit`}
+                  className="rounded-md border px-3 py-1.5 text-center text-sm hover:bg-gray-50"
+                >
+                  Edit
+                </Link>
+                <Button variant="outline" onClick={() => toggle(i)}>
+                  {i.available === false ? "Set Available" : "Set Unavailable"}
+                </Button>
                 <Button variant="outline" onClick={() => remove(i._id)}>Delete</Button>
               </div>
             </div>

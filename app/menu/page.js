@@ -71,7 +71,12 @@ function MenuContent() {
       ) : (
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((item) => (
-            <div key={item._id} className="flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-sm">
+            <div key={item._id} className="relative flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-sm">
+              {item.isPremiumVendor && (
+                <span className="absolute left-3 top-3 z-10 rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold text-black shadow">
+                  ⭐ Premium
+                </span>
+              )}
               <img src={item.images?.[0]} alt={item.itemName} className="h-48 w-full object-cover" />
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="text-lg font-semibold">{item.itemName}</h3>

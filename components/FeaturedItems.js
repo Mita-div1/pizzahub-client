@@ -10,7 +10,7 @@ export default function FeaturedItems() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu-items?limit=6`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu-items?limit=6&featured=true`)
       .then((r) => r.json())
       .then((data) => setItems(Array.isArray(data) ? data : []))
       .catch(() => setItems([]))
@@ -31,8 +31,13 @@ export default function FeaturedItems() {
           {items.map((item) => (
             <div
               key={item._id}
-              className="flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-sm"
+              className="relative flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-sm"
             >
+              {item.isPremiumVendor && (
+                <span className="absolute left-3 top-3 z-10 rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold text-black shadow">
+                  ⭐ Premium
+                </span>
+              )}
               <img
                 src={item.images?.[0]}
                 alt={item.itemName}

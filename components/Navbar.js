@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <Link href="/" className="text-2xl font-bold text-red-600">
           PizzaHub
@@ -39,6 +40,8 @@ export default function Navbar() {
           <Link href="/menu" className="hover:text-red-600">
             Browse Menu
           </Link>
+
+          <ThemeToggle />
 
           {!user ? (
             <>

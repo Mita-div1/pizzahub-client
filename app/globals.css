@@ -128,3 +128,69 @@
     @apply font-sans;
   }
 }
+
+
+
+
+/* Dark mode: keep cards and hero light, only page background goes dark */
+.dark .bg-white,
+.dark .bg-gray-50,
+.dark .bg-gradient-to-br {
+  color: oklch(0.145 0 0);
+}
+.dark .text-gray-600 {
+  color: var(--muted-foreground);
+}
+.dark .bg-white .text-gray-600,
+.dark .bg-gray-50 .text-gray-600,
+.dark .bg-gradient-to-br .text-gray-600 {
+  color: oklch(0.446 0.03 256.8);
+}
+
+/* Dark mode: make page-level headings and text white */
+.dark .text-red-700 {
+  color: oklch(0.985 0 0);
+}
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-500 {
+  color: oklch(0.85 0 0);
+}
+
+/* But inside light cards keep dark text */
+.dark .bg-white .text-red-700,
+.dark .bg-gray-50 .text-red-700,
+.dark .bg-gradient-to-br .text-red-700 {
+  color: oklch(0.505 0.213 27.5);
+}
+.dark .bg-white .text-gray-600,
+.dark .bg-white .text-gray-700,
+.dark .bg-white .text-gray-500,
+.dark .bg-gray-50 .text-gray-600,
+.dark .bg-gray-50 .text-gray-500,
+.dark .bg-gradient-to-br .text-gray-700,
+.dark .bg-gradient-to-br .text-gray-600 {
+  color: oklch(0.446 0.03 256.8);
+}
+
+/* Dark mode: text inside red buttons must be white */
+.dark .bg-red-600,
+.dark .bg-red-700,
+.dark .bg-red-600 *,
+.dark .bg-red-700 * {
+  color: #ffffff;
+}
+
+/* Pointer cursor on all clickable elements */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a[href],
+select,
+summary,
+label[for] {
+  cursor: pointer;
+}
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}

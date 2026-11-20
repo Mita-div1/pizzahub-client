@@ -1,9 +1,9 @@
 
-# 🍕 PizzaHub — Client
+# PizzaHub — Client
 
 PizzaHub is a pizza ordering and delivery platform where **customers** browse and order pizzas, **vendors** manage their menu and orders, and **admins** moderate the whole platform. This repository is the **Next.js frontend**.
 
-## 🔗 Links
+## Links
 
 | | Link |
 |---|---|
@@ -12,7 +12,7 @@ PizzaHub is a pizza ordering and delivery platform where **customers** browse an
 | Client repo | https://github.com/Mita-div1/pizzahub-client |
 | Server repo | https://github.com/Mita-div1/pizzahub-server |
 
-## ✨ Features
+## Features
 
 **Public**
 - Home page with banner, categories, featured items, "Why Choose Us" and "How It Works"
@@ -42,7 +42,7 @@ PizzaHub is a pizza ordering and delivery platform where **customers** browse an
 - JWT token sent with every protected API request
 - Role and subscription fields cannot be changed from the client
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Next.js 16** (App Router, JavaScript), **React**
 - **Tailwind CSS v4**, **shadcn/ui**, `tw-animate-css`
@@ -56,7 +56,7 @@ PizzaHub is a pizza ordering and delivery platform where **customers** browse an
 
 
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 Create a `.env.local` file in the project root. Only variable **names** are listed here:
 
@@ -71,11 +71,11 @@ NEXT_PUBLIC_IMGBB_KEY=
 - `BETTER_AUTH_URL` — the client URL (`http://localhost:3000` locally)
 - `NEXT_PUBLIC_API_URL` — the server URL (`http://localhost:5000` locally)
 
-## ▶️ Run Locally
+## Run Locally
 
 ```bash
 npm run dev
-```
+
 
 Open http://localhost:3000. Make sure the [server](https://github.com/Mita-div1/pizzahub-server) is running too.
 
@@ -86,7 +86,7 @@ npm run build
 npm start
 ```
 
-## 🧪 Challenge Implementation
+## Challenge Implementation
 
 **1. Search & Sort (menu page)**
 The menu page sends query parameters to the server's `GET /menu-items`:
@@ -105,7 +105,7 @@ The menu page sends query parameters to the server's `GET /menu-items`:
 3. `lib/api.js` attaches it as `Authorization: Bearer <token>` on every protected call.
 4. The server verifies the token and checks the role before responding.
 
-## 🔑 Demo Accounts
+## Demo Accounts
 
 | Role | Email | Password |
 |---|---|---|
@@ -114,6 +114,6 @@ The menu page sends query parameters to the server's `GET /menu-items`:
 
 Stripe test card: `4242 4242 4242 4242`, any future date, CVC `123`.
 
-## 👩‍💻 Author
+## Author
 
 Moumita Bala
